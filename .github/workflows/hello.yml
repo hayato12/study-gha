@@ -1,8 +1,8 @@
-name: Hello
+name: Conditions
 on: push
 jobs:
-  hello:
+  skip-or-run:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, world"
-      - uses: actions/checkout@v4
+      - run: echo "Hello"
+        if: $${{ contains(github.run_id, '1')}}
