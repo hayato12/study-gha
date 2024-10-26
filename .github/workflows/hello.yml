@@ -7,4 +7,5 @@ jobs:
       - run: echo "Hello"
         if: $${{ contains(github.run_id, '1')}}
       - run: exit 1
+      - run: echo "failure"
         if: ${{ failure() }}
