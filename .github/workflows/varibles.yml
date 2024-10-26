@@ -1,10 +1,11 @@
-name: Variables
+name: Compare functions
 on: push
 jobs:
-  print:
+  compare:
     runs-on: ubuntu-latest
-    env:
-      USERNAME: ${{ secrets.USERNAME }}
     steps:
-      - run: echo "${USERNAME}"
-      - run: echo "${USERNAME:0:1} ${USERNAME#?}"
+      - run: printenv | grep '_FUNC'
+        env:
+          CONTAINS_FUNC: ${{ contains('Hello', 'ell')}}
+          STARTS_WITH_FUNC: ${{ startsWith('Hello', 'He') }}
+          ENDS_WITH_FUNC: ${{ endWith('Hello', 'lo')}}
